@@ -44,15 +44,16 @@ passwordLength = Number(window.prompt('Choose between 8-128 characters for your 
         window.alert('Your password will NOT have UPPER CASE LETTERS');
       }
     
-    if (confSpecialChar + confNumChar + confLowCase + confUpperCase === !true) {
-      window.alert('Please select at least one condition');
-      confSpecialChar() + confNumChar() + confLowCase() + confUpperCase();
-    } 
-}
+      // if no conditions are selected, alert will pop up and generatepassword will re run
+    if (confSpecialChar === !true && confNumChar === !true && confLowCase === !true && confUpperCase === !true) {
+      alert('Please select at least one condition');}
+      generatePassword();
+    }
 
+const selectedCharacters = numericCharacters.concat(lowerCase,upperCase,specialCharacter);
 
-    // if (selectAgain) {return characterChoice();}
-  
+// // function to create password based on conditions, randomized
+// function createPassword  
   // Get references to the #generate element
   var generateBtn = document.querySelector("#generate");
   
