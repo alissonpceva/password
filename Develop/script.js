@@ -6,19 +6,21 @@ var numericCharacters = ['1','2','3','4','5','6','7','8','9','0'];
 var lowerCase = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
 var upperCase = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
 var specialCharacter = ['@', '%', '+', '\\', '/', "'", '!', '#', '$', '^', '?', ':', ',', ')', '(', '}', '{', ']', '[', '~', '-', '_', '.'];
+var selectedCharacters = [];
+
 
 // select password length 
 
 passwordLength = Number(window.prompt('Choose between 8-128 characters for your password.'));
   if (passwordLength < 8 || passwordLength > 128) {
     window.alert ('Please choose a number between 8 to 128.');
-    passwordLength();
   } else (window.alert('Your password will be ' + passwordLength + ' characters long'));
-
+ 
     // click ok to confirm special characters
     confSpecialChar = confirm("Confirm Special Characters for your password")
     if (confSpecialChar == true) {
       window.alert('Your password will have special characters');
+      selectedCharacters = selectedCharacters.concat(specialCharacter);
     } else {
       window.alert('Your password will NOT have special characters');
     }
@@ -26,6 +28,7 @@ passwordLength = Number(window.prompt('Choose between 8-128 characters for your 
     confNumChar = confirm("Confirm Numeric Characters for your password")
     if (confNumChar == true) {
       window.alert('Your password will have numeric characters');
+      selectedCharacters = selectedCharacters.concat(numericCharacters);
     } else {
       window.alert('Your password will NOT have numeric characters');
     }
@@ -33,6 +36,7 @@ passwordLength = Number(window.prompt('Choose between 8-128 characters for your 
       confLowCase = confirm("Confirm lower case letters for your password")
       if (confLowCase == true) {
         window.alert('Your password will have lower case letters');
+        specialCharacter = specialCharacter.concat(lowerCase);
       } else {
         window.alert('Your password will NOT have lower case letters');
       }
@@ -40,6 +44,7 @@ passwordLength = Number(window.prompt('Choose between 8-128 characters for your 
       confUpperCase = confirm("Confirm UPPER CASE LETTERS for your password")
       if (confUpperCase == true) {
         window.alert('Your password will have UPPER CASE LETTERS');
+        specialCharacter = specialCharacter.concat(upperCase)
       } else {
         window.alert('Your password will NOT have UPPER CASE LETTERS');
       }
@@ -48,11 +53,19 @@ passwordLength = Number(window.prompt('Choose between 8-128 characters for your 
     if (confSpecialChar === !true && confNumChar === !true && confLowCase === !true && confUpperCase === !true) {
       alert('Please select at least one condition');}
       generatePassword();
-    }
+      return;
+    
+// selectedCharacters[Math.floor(Math.random() * passwordLength.length)];
+//   for (let i = 0; i < passwordLength; i++) {
+//     }
+  }
 
-const selectedCharacters = numericCharacters.concat(lowerCase,upperCase,specialCharacter);
+// // function to create password based on conditions
 
-// // function to create password based on conditions, randomized
+function finalPassword() {
+  return selectedCharacters[Math.floor(Math.random() * passwordLength.length)];
+}
+
 // function createPassword  
   // Get references to the #generate element
   var generateBtn = document.querySelector("#generate");
