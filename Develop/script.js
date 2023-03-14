@@ -14,11 +14,12 @@ var selectedCharacters = [];
 var passwordLength = Number(window.prompt('Choose between 8-128 characters for your password.'));
 if (passwordLength < 8 || passwordLength > 128) {
   window.alert ('Please choose a number between 8 to 128.');
-  return; // Exit the function if password length is invalid
+  return; 
 } else {
   window.alert('Your password will be ' + passwordLength + ' characters long');
 }
 
+// select specific charactes
 var confSpecialChar = confirm("Confirm Special Characters for your password")
 if (confSpecialChar == true) {
   window.alert('Your password will have special characters');
@@ -51,11 +52,13 @@ if (confUpperCase == true) {
   window.alert('Your password will NOT have UPPER CASE LETTERS');
 }
 
+// alert if no characters selected and return
 if (confSpecialChar !== true && confNumChar !== true && confLowCase !== true && confUpperCase !== true) {
   alert('Please select at least one condition');
-  return; // Exit the function if no character type is selected
+  return; 
 }
 
+// function that generates random values dependent if confirm and pswd legth 
 var password = '';
 for (var i = 0; i < passwordLength; i++) {
   var randomIndex = Math.floor(Math.random() * selectedCharacters.length);
